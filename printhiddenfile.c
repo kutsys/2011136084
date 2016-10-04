@@ -24,7 +24,6 @@ void printhiddenfile(char* dir, int depth){
 				printf("%*s%s\n", depth, "", entry->d_name);
 		}
 	}
-	chdir("..");
 	closedir(dp);
 }
 
