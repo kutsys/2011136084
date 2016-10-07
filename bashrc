@@ -118,3 +118,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# bash prompt에 user-id와 현재 디렉토리를 표시할 수 있도록 변경
+# \u는 사용자 이름을 표시
+# \w는 현재 디렉토리 전체를 표시(\W는 현재 디렉토리의 최상위 디렉토리만 표시)
+# \\$은 현재 사용가 uid가 0(root)이면 #을, 아니면 $을 표시
+export PS1='[\u]\w \\$ '
