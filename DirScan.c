@@ -18,12 +18,20 @@ void printnothiddenfile(char* dir, int depth){
 	chdir(dir);
 	while((entry=readdir(dp))!=NULL){
 		lstat(entry->d_name, &statbuf);
-		if(!S_ISDIR(statbuf.st_mode)){
+		// not search hidden subdirectory
+		//if(entry->d_name[0]=='.')
+		//	continue;
+		if(S_ISDIR(statbuf.st_mode)){
 			// print only hidden file
-			if(entry->d_name[0]!='.')
-				printf("%*s%s\n", depth, "", entry->d_name);
+			if(strcmp(".", entry->d_name)==NULL ||
+			   strcmp("..", entry->d_name)==NULL) continue;
+			printf("%*s%s\n", depth, "", entry->d_name);
+			printnothiddenfile(entry->d_name, depth+4);
 		}
+		else (entry->d_name[0]=='.')
+			printf("%*s%s\n", depth, "", entry->d_name);
 	}
+	chdir("..");
 	closedir(dp);
 }
 
