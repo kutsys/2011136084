@@ -23,12 +23,12 @@ void printnothiddenfile(char* dir, int depth){
 		//	continue;
 		if(S_ISDIR(statbuf.st_mode)){
 			// print only hidden file
-			if(strcmp(".", entry->d_name)==NULL ||
-			   strcmp("..", entry->d_name)==NULL) continue;
+			if(strcmp(".", entry->d_name)==0 ||
+			   strcmp("..", entry->d_name)==0) continue;
 			printf("%*s%s\n", depth, "", entry->d_name);
 			printnothiddenfile(entry->d_name, depth+4);
 		}
-		else (entry->d_name[0]=='.')
+		else
 			printf("%*s%s\n", depth, "", entry->d_name);
 	}
 	chdir("..");
