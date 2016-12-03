@@ -1,5 +1,8 @@
 
-all : mproc1 mproc2
+all : mproc1 mproc2 mproc3
+
+mproc3 : mproc3.c subproc_func.o subproc_func.h
+	gcc -Wall -o mproc3 mproc3.c subproc_func.o -lpthread
 
 mproc2 : mproc2.c subproc_func.o subproc_func.h
 	gcc -Wall -o mproc2 mproc2.c subproc_func.o -lpthread
