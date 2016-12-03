@@ -15,7 +15,7 @@ void test_funct() {
 
 int main(int argc, char* argv[])
 {
-	int callto = 10, maxSleep = 10;
+	int callto = 20, maxSleep = 10;
 	int seed = time(NULL);
 	if(argc>=2) callto = atoi(argv[1]);
 	if(argc>=3) maxSleep = atoi(argv[2]);

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <signal.h>
 
-#define EXECTO 5
+#define EXECTO 10
 pid_t childPid[EXECTO];
 void killChild(int sig) {
 	printf("Terminated.\n");
@@ -24,7 +24,7 @@ int main(void) {
 		rand();
 		if(pid==0) {
 			sprintf(seed, "%d", rand());
-			execl("./subproc", "subproc", "5", "5", seed, NULL);
+			execl("./subproc", "subproc", "20", "10", seed, NULL);
 		}
 		else
 			childPid[p] = pid;
