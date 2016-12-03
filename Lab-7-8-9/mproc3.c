@@ -43,6 +43,7 @@ int main(int argc, char* argv[]) {
 		}
 	}
 	pthread_mutex_destroy(&tfcMutex);
+	printf("Finished Successfully\n");
 
 	exit(0);
 }
