@@ -9,8 +9,7 @@
 int testFunctCalled = 0;
 pthread_mutex_t tfcMutex;
 void* subprocSync(void* arg) {
-	const int callto = 20;
-	const int maxSleep = 10;
+	const int callto = 20, maxSleep=10;
 	for(int i=0; i<callto; ++i) {
 		test_funct(i+1);
 		pthread_mutex_lock(&tfcMutex);

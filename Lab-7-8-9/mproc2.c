@@ -8,7 +8,7 @@
 #define EXECTO 10
 
 void* subprocThread(void* arg) {
-	subproc_func(3,3);
+	subproc_func(20,10);
 	return NULL;
 }
 
