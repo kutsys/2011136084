@@ -31,6 +31,8 @@ int main(int argc, char* argv[]) {
 		read(pipeId, producerPid, PIPE_BUF);
 		read(pipeId, studentId, PIPE_BUF);
 		close(pipeId);
+		printf("producer_pid:%s, studnet_id:%s\n", producerPid
+				, studentId);
 
 		// open consumer fifo for write
 		pipeId = open(CONSUMER_FIFO, O_WRONLY);
@@ -42,7 +44,6 @@ int main(int argc, char* argv[]) {
 		write(pipeId, myPid, PIPE_BUF);
 		write(pipeId, studentName, PIPE_BUF);
 		close(pipeId);
-		printf("producer_pid:%s\n", producerPid);
 	}
 	exit(EXIT_FAILURE);
 }
