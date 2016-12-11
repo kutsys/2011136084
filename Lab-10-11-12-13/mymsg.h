@@ -1,3 +1,5 @@
+// Lab-12
+
 #define MYMSG_KEY 12188
 #define MYMSG_SIZE 64
 

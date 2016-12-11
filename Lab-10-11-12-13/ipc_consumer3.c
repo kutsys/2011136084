@@ -5,6 +5,7 @@
 #include <string.h>
 #include "mymsg.h"
 
+// Lab-12
 int main(int argc, char* argv[]) {
 	const char* studentName = "Lee Do-hyung";
 	char myPid[16];	
