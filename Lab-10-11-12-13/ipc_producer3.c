@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
 			msgrcv(msgKey, &msgBuf, sizeof(MyMsg)-sizeof(long),
 					CONSUMER_PUSHED, 0);
 			strcpy(studentName, msgBuf.msgBody);
-			printf("producer2_pid:%s, consumer2_pid:%s, student_id:%s, student_name:%s\n", myPid, consumerPid, studentId, studentName);
+			printf("producer3_pid:%s, consumer3_pid:%s, student_id:%s, student_name:%s\n", myPid, consumerPid, studentId, studentName);
 		}
 		if(strcmp(cmdBuf, "exit")==0) {
 			printf("exit program...\n");
