@@ -1,5 +1,13 @@
 
-all : ipc1 ipc2 ipc3
+all : ipc1 ipc2 ipc3 ipc4
+
+ipc4 : ipc_producer4 ipc_consumer4
+
+ipc_producer4 : ipc_producer4.c mysock.h
+	gcc -Wall -o ipc_producer4 ipc_producer4.c
+
+ipc_consumer4 : ipc_consumer4.c mysock.h
+	gcc -Wall -o ipc_consumer4 ipc_consumer4.c
 
 ipc3 : ipc_producer3 ipc_consumer3
 
