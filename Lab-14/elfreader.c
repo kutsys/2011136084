@@ -8,6 +8,7 @@
 #define OPT_SEC_HEADER (1<<2)
 
 int main(int argc, char* argv[]) {
+	// get option and execute program name
 	int opt = 0;
 	char* exec = NULL;
 	for(int i=1; i<argc; ++i) {
@@ -37,6 +38,8 @@ int main(int argc, char* argv[]) {
 		printf("error! input elf file name.\n");
 		exit(EXIT_FAILURE);
 	}
+	
+	// make shell command and execute
 	char cmd[256] = "readelf -";
 	if(opt==0 || (opt & OPT_ELF_HEADER))
 		strcat(cmd, "h");
@@ -47,5 +50,6 @@ int main(int argc, char* argv[]) {
 	strcat(cmd, " ");
 	strcat(cmd, exec);
 	system(cmd);
+
 	exit(EXIT_SUCCESS);
 }
