@@ -23,6 +23,7 @@ int main(int argc, char **argv){
 					printf("Unknown option character '\\x%x'.\n", optopt);
 				exit(EXIT_FAILURE);
 		}
+	if(opt==0) opt = OPT_ELF_HEADER;
 	exec = argv[optind];
 
 	if(exec == NULL){
@@ -77,7 +78,7 @@ int main(int argc, char **argv){
 void elfreaderHeader32(Elf32_Ehdr elfEhdr) {
 	printf("ELF Header:\n");
 	printf(" Magic: ");						// printf magic number
-	for(i=0; i<EI_NIDENT; i++)
+	for(int i=0; i<EI_NIDENT; i++)
 		printf("%02x ", elfEhdr.e_ident[i]);
 	printf("\n");
 	
@@ -552,7 +553,7 @@ void elfreaderHeader32(Elf32_Ehdr elfEhdr) {
 	printf("\n");
 }
 
-void elfreaderSectionHeader32(const FILE* const fp, const Elf32_Ehdr elfEhdr) {
+void elfreaderSectionHeader32(FILE* fp, Elf32_Ehdr elfEhdr) {
 	char* string_table;
 	char section_type[16];
 	Elf32_Shdr elfShdr;
@@ -690,7 +691,7 @@ void elfreaderProgramHeader32(FILE* fp, Elf32_Ehdr elfEhdr) {
 void elfreaderHeader64(Elf64_Ehdr elfEhdr) {
 	printf("ELF Header:\n");
 	printf(" Magic: ");						// printf magic number
-	for(i=0; i<EI_NIDENT; i++)
+	for(int i=0; i<EI_NIDENT; i++)
 		printf("%02x ", elfEhdr.e_ident[i]);
 	printf("\n");
 	
@@ -1251,9 +1252,9 @@ void elfreaderSectionHeader64(FILE* fp, Elf64_Ehdr elfEhdr) {
 	}
 }
 
-void elfreaderProgramHeader64(FILE* fp, Elf64_Shdr) {
+void elfreaderProgramHeader64(FILE* fp, Elf64_Ehdr elfEhdr) {
 	char program_type[16];
-	Elf64_Shdr elfSdhr;
+	Elf64_Phdr elfPhdr;
 
 	fseek(fp, elfEhdr.e_phoff, SEEK_SET);
 	printf("%-16s %-18s %-18s %-18s\n", "Type", "Offset", "VirtualAddr", "PhysicalAddr");

@@ -423,8 +423,8 @@ typedef struct elf64_phdr{
 }Elf64_Phdr;
 
 void elfreaderHeader32(Elf32_Ehdr elfEhdr);
-void elfreaderHeader64(Elf32_Ehdr elfEhdr);
+void elfreaderHeader64(Elf64_Ehdr elfEhdr);
 void elfreaderSectionHeader32(FILE* fp, Elf32_Ehdr elfEhdr);
-void elfreaderSectionHeader64(FILE* fp, Elf32_Ehdr elfEhdr);
+void elfreaderSectionHeader64(FILE* fp, Elf64_Ehdr elfEhdr);
 void elfreaderProgramHeader32(FILE* fp, Elf32_Ehdr elfEhdr);
-void elfreaderProgramHeader64(FILE* fp, Elf32_Ehdr elfEhdr);
+void elfreaderProgramHeader64(FILE* fp, Elf64_Ehdr elfEhdr);
