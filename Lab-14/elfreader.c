@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 #include "elfreader.h"
 
 int main(int argc, char **argv){
@@ -29,7 +30,7 @@ int main(int argc, char **argv){
 		exit(EXIT_FAILURE);
 	}
 
-	File* fp = fopen(exec, "r");
+	FILE* fp = fopen(exec, "r");
 	if(fp == NULL){
 		printf("Error! file(%s) is not opened\n", exec);
 		exit(EXIT_FAILURE);
@@ -551,7 +552,7 @@ void elfreaderHeader32(Elf32_Ehdr elfEhdr) {
 	printf("\n");
 }
 
-void elfreaderSectionHeader32(const File* const fp, const Elf32_Ehdr elfEhdr) {
+void elfreaderSectionHeader32(const FILE* const fp, const Elf32_Ehdr elfEhdr) {
 	char* string_table;
 	char section_type[16];
 	Elf32_Shdr elfShdr;
@@ -636,7 +637,7 @@ void elfreaderSectionHeader32(const File* const fp, const Elf32_Ehdr elfEhdr) {
 	}
 }
 
-void elfreaderProgramHeader32(File* fp, Elf32_Ehdr elfEhdr) {
+void elfreaderProgramHeader32(FILE* fp, Elf32_Ehdr elfEhdr) {
 	Elf32_Phdr elfPhdr;
 	char program_type[16];
 
@@ -1164,7 +1165,7 @@ void elfreaderHeader64(Elf64_Ehdr elfEhdr) {
 	printf("\n");
 }
 
-void elfreaderSectionHeader64(File* fp, Elf64_Ehdr elfEhdr) {
+void elfreaderSectionHeader64(FILE* fp, Elf64_Ehdr elfEhdr) {
 	char *string_table;
 	char section_type[16];
 	Elf64_Shdr elfShdr;
@@ -1250,7 +1251,7 @@ void elfreaderSectionHeader64(File* fp, Elf64_Ehdr elfEhdr) {
 	}
 }
 
-void elfreaderProgramHeader64(File* fp, Elf64_Shdr) {
+void elfreaderProgramHeader64(FILE* fp, Elf64_Shdr) {
 	char program_type[16];
 	Elf64_Shdr elfSdhr;
 
