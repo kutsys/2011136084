@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-
 #define OPT_ELF_HEADER 		0x1
 #define OPT_SEC_HEADER 		0x2
 #define OPT_PRO_HEADER 		0x4
@@ -426,3 +421,10 @@ typedef struct elf64_phdr{
 	Elf64_Xword		p_memsz;		// Size of segment in memory
 	Elf64_Xword		p_align;		// Alignment of segment
 }Elf64_Phdr;
+
+void elfreaderHeader32(Elf32_Ehdr elfEhdr);
+void elfreaderHeader64(Elf32_Ehdr elfEhdr);
+void elfreaderSectionHeader32(FILE* fp, Elf32_Ehdr elfEhdr);
+void elfreaderSectionHeader64(FILE* fp, Elf32_Ehdr elfEhdr);
+void elfreaderProgramHeader32(FILE* fp, Elf32_Ehdr elfEhdr);
+void elfreaderProgramHeader64(FILE* fp, Elf32_Ehdr elfEhdr);
